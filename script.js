@@ -12,3 +12,8 @@ function getID(callback) {
     callback(num);
   }, 1000);
 }
+
+function getData(id, callback) {
+  fetch('http://localhost:3000/characters/' + id)
+    .then(callback);
+}
