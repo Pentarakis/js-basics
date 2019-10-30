@@ -1,24 +1,14 @@
-let num = 1000;
+let num = 0;
 
-function clickCallback() {
-    getID(id => {
-        console.log('ID: ' + id);
-        getData(id, character => {
-           console.log(character);
-        });
-    });
+function onClickHandler () {
+  getID((id) => {
+    console.log(id);
+  });
 }
 
 function getID(callback) {
-    setTimeout(() => {
-        num++;
-        callback(num);
-        console.log(num);
-    }, 2000);
-}
-
-function getData(id, callback) {
-    fetch('http://localhost:3000/characters/' + id)
-        .then(response => response.json())
-        .then(callback);
+  setTimeout(() => {
+    num++;
+    callback(num);
+  }, 1000);
 }
