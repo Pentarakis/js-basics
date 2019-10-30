@@ -1,9 +1,19 @@
-let num = 0;
+let num = 20;
 
 function onClickHandler () {
   getID((id) => {
-    console.log(id);
+    loadCharacterData(id, response => {
+      response.json()
+      .then(data => {
+        showCharacterName(data);
+      });
+    });
   });
+}
+
+function showCharacterName(character) {
+  document.getElementById('characterName')
+    .innerText = `ID: ${character.id}, Character: ${character.name}`;
 }
 
 function getID(callback) {
@@ -13,7 +23,7 @@ function getID(callback) {
   }, 1000);
 }
 
-function getData(id, callback) {
+function loadCharacterData(id, callback) {
   fetch('http://localhost:3000/characters/' + id)
-    .then(callback);
+  .then(callback);
 }
