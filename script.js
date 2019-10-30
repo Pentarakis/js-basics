@@ -1,9 +1,14 @@
-let num = 0;
+let num = 20;
 
 function onClickHandler () {
   getID((id) => {
-    console.log(id);
+    showCharacterName(id)
   });
+}
+
+function showCharacterName(id, name) {
+  document.getElementById('characterName')
+    .innerText = `ID: ${id}, Character: ${name}`;
 }
 
 function getID(callback) {
@@ -13,7 +18,7 @@ function getID(callback) {
   }, 1000);
 }
 
-function getData(id, callback) {
+function loadCharacterData(id, callback) {
   fetch('http://localhost:3000/characters/' + id)
-    .then(callback);
+  .then(callback);
 }
